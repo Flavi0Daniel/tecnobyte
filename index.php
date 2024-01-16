@@ -1,8 +1,11 @@
+<?php
+    require_once("conexao.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -10,7 +13,6 @@
     <!-- shortcut icon & favicon-->
     <link rel="shortcut icon" href="logo-fundo.png" type="image/png">
     <link rel="icon" href="logo-fundo.png" type="image/png">
-
 </head>
 
 <body>
@@ -29,30 +31,28 @@
     <section id="destaques">
 
         <h2>Produtos em Destaque</h2>
+        <?php
+            $consulta_produtos = "SELECT * FROM produtos";
+            $resultado_consulta = $conn->query($consulta_produtos);
+        ?>
 
         <div class="container">
             <div class="row">
-                <div class="col-sm-4">
+                <?php
+                if ($resultado_consulta->rowCount() > 0) {
+                    while ($produtos = $resultado_consulta->fetch()) {
+                ?>
+                <div class="col-sm-3">
                     <div class="produto">
-                        <img src="baixados.png" alt="Produto em Destaque 1">
-                        <p>ASUS F415</p>
-                        <p>Preço: 550.000,00 KZ</p>
+                        <img src="<?= $produtos["imagem"] ?>" alt="Produto em Destaque 1">
+                        <p><?= $produtos["nome"] ?></p>
+                        <p><?= $produtos["preco"] ?></p>
                     </div>
                 </div>
-                <div class="col-sm-4">
-                    <div class="produto">
-                        <img src="719aLEkzkGL._AC_SL1280_-removebg-preview.png" alt="Produto em Destaque 2">
-                        <p>Mpow H7 Auricular Bluetooh</p>
-                        <p>Preço: 17.000,00 KZ</p>
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="produto">
-                        <img src="mouse-sem-fio-logitech-m187-24ghz-azul-50105-2000-201470-removebg-preview.png" alt="Produto em Destaque 3">
-                        <p>Mouse sem FIO Logitech M187 2.4ghz</p>
-                        <p>Preço: 6.499,99 KZ</p>
-                    </div>
-                </div>
+                <?php
+                    }
+                }
+                ?>
             </div>
         </div>
         <h2>Breve Descrição da Tecnobyte</h2>
