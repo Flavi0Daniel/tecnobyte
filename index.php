@@ -55,11 +55,52 @@
                 ?>
             </div>
         </div>
+
+        <!-- CRUD -->
+        <form action="index.php" method="post">
+            <button type="submit">Inserir Dados</button>
+        </form>
+
+        <form action="editar.php" method="post">
+          <button type="submit">Editar Dados</button>
+        </form>
+
+        <form action="deletar.php" method="post">
+          <button type="submit">Deletar Dados</button>
+        </form>
+
+        <!-- Insert into -->
+        <?php
+        require_once("conexao.php");
+
+if ($_SERVER["REQUEST_METHOD"] == "post") {
+    $imagem = $_POST["RGB Keyboard.png"];
+    $nome = $_POST["TECLADO GAMER RGB K100"];
+    $preco = $_POST["Preço: 14.500,00 KZ"];
+
+    $stmt = $conn->prepare("INSERT INTO produtos (imagem, nome, preco) VALUES (:imagem, :nome, :preco)");
+    $stmt->bindParam(':imagem', $imagem);
+    $stmt->bindParam(':nome', $nome);
+    $stmt->bindParam(':preco', $preco);
+
+    try {
+        $stmt->execute();
+        echo "Dados inseridos com sucesso!";
+    } catch (PDOException $e) {
+        echo "Erro ao inserir dados: " . $e->getMessage();
+    }
+}
+?>
+
+
+
+
         <h2>Breve Descrição da Tecnobyte</h2>
 
         <p>Bem-vindo à Tecnobyte, sua loja online de tecnologia! Oferecemos uma ampla gama de produtos eletrônicos de alta qualidade, desde smartphones e laptops até acessórios inovadores. Nossa missão é proporcionar a você as últimas e melhores tecnologias a preços acessíveis. Explore nosso catálogo e descubra as soluções tecnológicas que você procura.</p>
 
     </section>
+    
 
     <footer>
         <p>&copy; 2023 Tecnobyte. Todos os direitos reservados.</p>
