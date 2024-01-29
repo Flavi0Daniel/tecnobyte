@@ -57,17 +57,19 @@
         </div>
 
         <!-- CRUD -->
-        <form action="index.php" method="post">
-            <button type="submit">Inserir Dados</button>
-        </form>
+       
+                        <form action="inserir.php" method="post">
+                             <button type="submit">Inserir Dados</button>
+                         </form>
 
-        <form action="editar.php" method="post">
-          <button type="submit">Editar Dados</button>
-        </form>
+                         <form action="editar.php" method="post">
+                             <button type="submit">Editar Dados</button>
+                         </form>
 
-        <form action="deletar.php" method="post">
-          <button type="submit">Deletar Dados</button>
-        </form>
+                         <form action="deletar.php" method="post">
+                           <button type="submit">Deletar Dados</button>
+                          </form> 
+                   
 
         <!-- Insert into -->
         <?php
