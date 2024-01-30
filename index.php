@@ -54,6 +54,7 @@ require_once("conexao.php");
                         <div class="row">
                             <div class="col-sm-6">
                                 <a href="edita.php" class="btn btn-warning"><i class="fa fa-edit"></i></a>
+                                
                             </div>
                             <div class="col-sm-6">
                                 <a href="deletar.php" class="btn btn-danger"><i class="fa fa-trash"></i></a>
