@@ -23,7 +23,7 @@ if (!is_numeric($price)) {
 
     $consulta = $conn->prepare("UPDATE produtos SET imagem=:imagem, nome=:nome, preco=:preco WHERE id=:idd"); 
     
-    $consulta = bindParam(':idd', $id2);
+    $consulta->bindParam(':idd', $id2);
     $consulta->bindParam(':imagem', $imagem);
     $consulta->bindParam(':nome', $name);
     $consulta->bindParam(':preco', $price);
